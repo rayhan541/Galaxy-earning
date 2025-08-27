@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+ <script src='//libtl.com/sdk.js' data-zone='9496463' data-sdk='show_9496463'></script> 
+  
+  
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Galaxy Earn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* এখানে আপনার CSS কোড আছে, যা আমি পরিবর্তন করিনি */
+        :root {
+            /* New font added */
+            --font-main: 'Nunito', sans-serif;
+            /* --- New Light Mode Color Theme --- */
+            --light-bg: #f0f2f5;
+            --light-card-bg: #ffffff;
+            --light-text: #283342;
+            --light-text-secondary: #5a687b;
+            --light-border: #e4e6eb;
+            --light-accent: #1abc9c;
+            /* Teal color */
+            --light-accent-rgb: 26, 188, 156;
+            --light-accent-gradient: linear-gradient(135deg, #1abc9c, #16a085);
+            --light-success: #27ae60;
+            --light-shadow-soft: rgba(22, 28, 36, 0.08);
+            --light-shadow-medium: rgba(22, 28, 36, 0.12);
+            --light-error: #e74c3c;
+            /* --- New Dark Mode Color Theme --- */
+            --dark-bg: #1e1e2d;
+            --dark-card-bg: #2b2b3e;
+            --dark-text: #e8e9f3;
+            --dark-text-secondary: #a0a8c0;
+            --dark-border: #3a3b53;
+            --dark-accent: #76ff03;
+            /* Lime Green */
+            --dark-accent-rgb: 118, 255, 3;
+            --dark-accent-gradient: linear-gradient(135deg, #76ff03, #5de2a4);
+            --dark-success: #64dd17;
+            --dark-shadow-soft: rgba(0, 0, 0, 0.25);
+            --dark-shadow-medium: rgba(0, 0, 0, 0.35);
+            --dark-error: #ff5252;
+            /* Neumorphism Shadow updated */
+            --neumorph-shadow-light-outer: -5px -5px 10px #ffffff, 5px 5px 10px #d1d9e6;
+            --neumorph-shadow-dark-outer: -5px -5px 10px #34344e, 5px 5px 10px #222238;
+            --neumorph-shadow-light-inner: inset -3px -3px 7px #ffffff, inset 3px 3px 7px #d1d9e6;
+            --neumorph-shadow-dark-inner: inset -3px -3px 7px #34344e, inset 3px 3px 7px #222238;
+            /* Default variables */
+            --bg-color: var(--light-bg);
+            --card-bg-color: var(--light-card-bg);
+            --text-color: var(--light-text);
+            --text-secondary-color: var(--light-text-secondary);
+            --border-color: var(--light-border);
+            --accent-color: var(--light-accent);
+            --accent-color-rgb: var(--light-accent-rgb);
+            --accent-gradient: var(--light-accent-gradient);
+            --success-color: var(--light-success);
+            --shadow-soft: var(--light-shadow-soft);
+            --shadow-medium: var(--light-shadow-medium);
+            --neumorph-shadow-outer: var(--neumorph-shadow-light-outer);
+            --neumorph-shadow-inner: var(--neumorph-shadow-light-inner);
+            --error-color: var(--light-error);
+        }
+
+        body.dark-mode {
+            --bg-color: var(--dark-bg);
+            --card-bg-color: var(--dark-card-bg);
+            --text-color: var(--dark-text);
+            --text-secondary-color: var(--dark-text-secondary);
+            --border-color: var(--dark-border);
+            --dark-accent: #76ff03;
+            --accent-color: var(--dark-accent);
+            --accent-color-rgb: var(--dark-accent-rgb);
+            --accent-gradient: var(--dark-accent-gradient);
+            --dark-success: #64dd17;
+            --success-color: var(--dark-success);
+            --shadow-soft: var(--dark-shadow-soft);
+            --shadow-medium: var(--dark-shadow-medium);
+            --neumorph-shadow-outer: var(--neumorph-shadow-dark-outer);
+            --neumorph-shadow-inner: var(--neumorph-shadow-dark-inner);
+            --error-color: var(--dark-error);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 110px;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .top-banner {
+            width: 100%;
+            height: 160px;
+            /* New banner image (Provide your own image link) */
+            background-image: url('https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px var(--shadow-soft);
+        }
+
+        .theme-toggle-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(3px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .profile-cover-section {
+            background-color: var(--card-bg-color);
+            margin: -60px 20px 15px 20px;
+            border-radius: 16px;
+            padding: 20px;
+            padding-top: 70px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .profile-pic-container {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            background-color: var(--card-bg-color);
+            padding: 4px;
+            box-shadow: 0 3px 10px var(--shadow-soft);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .profile-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 3px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .verified-profile-icon {
+            color: var(--accent-color);
+            font-size: 0.8em;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .edit-name-btn {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-left: 8px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .edit-name-btn:hover {
+            opacity: 1;
+        }
+
+        .user-points {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--success-color);
+            margin-top: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background-color: rgba(var(--accent-color-rgb), 0.1);
+            border-radius: 20px;
+        }
+
+        .user-points i {
+            color: var(--success-color);
+        }
+
+        .user-ad-stats {
+            font-size: 0.85em;
+            color: var(--text-secondary-color);
+            margin-top: 8px;
+        }
+
+        .main-content {
+            padding: 0 15px 15px 15px;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .task-card {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--neumorph-shadow-outer);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .task-card h2 {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.3px;
+        }
+
+        .task-card h2 i:not(.verified-profile-icon) {
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.3em;
+            text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+        }
+
+        .task-card p {
+            font-size: 0.95em;
+            color: var(--text-secondary-color);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .task-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.25);
+        }
+
+        .task-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(var(--accent-color-rgb), 0.35);
+        }
+
+        .task-button:disabled {
+            background: var(--border-color);
+            color: var(--text-secondary-color);
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .channel-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 5px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .channel-item:last-child {
+            border-bottom: none;
+        }
+
+        .channel-join-btn {
+            padding: 7px 14px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .channel-join-btn.visited {
+            background-color: var(--success-color);
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .bottom-fixed-area {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .developer-footer {
+            width: 100%;
+            max-width: 480px;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-secondary-color);
+            background-color: var(--card-bg-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .developer-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bottom-nav {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--card-bg-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -3px 15px var(--shadow-soft);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary-color);
+            text-decoration: none;
+            font-size: 0.75em;
+            font-weight: 500;
+            flex: 1;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .nav-item i {
+            font-size: 1.8em;
+            margin-bottom: 4px;
+        }
+
+        .nav-item.active {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .ad-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--dark-bg-rgb, 30, 30, 45), 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .ad-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .ad-modal-content {
+            background-color: var(--card-bg-color);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 30px var(--shadow-medium);
+            width: 90%;
+            max-width: 380px;
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .ad-modal-overlay.show .ad-modal-content {
+            transform: scale(1);
+        }
+
+        .spinner {
+            border: 4px solid rgba(var(--accent-color-rgb), 0.2);
+            border-left-color: var(--accent-color);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .withdraw-input,
+        .withdraw-select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1em;
+            box-shadow: var(--neumorph-shadow-inner);
+        }
+
+        /* Leaderboard Specific Styles */
+        .leaderboard-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: var(--bg-color);
+            box-shadow: var(--neumorph-shadow-inner);
+            position: relative;
+        }
+
+        .leaderboard-item:before {
+            content: attr(data-rank);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--accent-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .leaderboard-item.rank-1:before {
+            content: '🥇';
+        }
+        .leaderboard-item.rank-2:before {
+            content: '🥈';
+        }
+        .leaderboard-item.rank-3:before {
+            content: '🥉';
+        }
+
+        .leaderboard-item-details {
+            margin-left: 45px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .leaderboard-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .leaderboard-points {
+            font-weight: 700;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Game-specific styles */
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .game-container canvas {
+            display: block;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+        .game-container #hud {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 10;
+        }
+        .game-container #buttons {
+            position: fixed;
+            bottom: 144px; /* Adjusted to move buttons up by approx 1.5 inches */
+            left: 20px;
+            width: auto;
+            display: flex;
+            justify-content: flex-start;
+            padding: 0;
+            z-index: 10;
+        }
+        .game-container .btn {
+            font-size: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .game-container .btn img {
+            height: 30px;
+            width: 30px;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        .game-container #brakeButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 20px 40px;
+            background: rgba(150, 0, 0, 0.7);
+            border-radius: 15px;
+            z-index: 10;
+        }
+        .game-container #brakeButton img {
+            height: 80px;
+            width: 80px;
+        }
+        .game-container #right {
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            margin-left: 40px; /* Approximately 1.5 inches separation */
+            margin-top: 0;
+        }
+        .game-container #right img {
+            height: 80px;
+            width: 80px;
+        }
+        .game-container #left {
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            margin-right: 0;
+        }
+        .game-container #left img {
+            height: 80px;
+            width: 80px;
+        }
+        .game-container #gameOverScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            z-index: 20;
+            /* Added new styles for the buttons within gameOverScreen */
+        }
+        .game-container #gameOverScreen button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            /* Added margin-top to separate the buttons from the Go to Home button */
+            margin-top: 20px;
+        }
+        .game-container #restartButton {
+            background-color: #4CAF50;
+        }
+        .game-container #homeButton {
+            background-color: #f44336;
+        }
+        .game-container #permissionButton {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            font-size: 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 100;
+            display: none;
+        }
+        /* Adjusted styles for Sound, Free Points and Speed buttons */
+        .game-container .game-over-btn {
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px; /* Add some space between the buttons */
+        }
+        .game-container .game-over-btn.sound-btn {
+            background-color: rgba(0, 150, 0, 0.7);
+        }
+        .game-container .game-over-btn.freepoint-btn {
+            background-color: rgba(50, 150, 50, 0.7);
+        }
+        .game-container .game-over-btn.speed-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .game-container .game-over-btn.speed-btn span {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .game-container #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 30;
+        }
+        .game-container #pointAdScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            z-index: 50;
+            text-align: center;
+        }
+        .game-container #pointAdScreen .ad-placeholder {
+            margin: 20px;
+            padding: 30px;
+            background: rgba(50, 50, 50, 0.8);
+            border-radius: 15px;
+        }
+        .game-container #pointAdScreen button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .game-container #freePointButton:disabled {
+            background-color: rgba(100, 100, 100, 0.7);
+            cursor: not-allowed;
+        }
+        .game-container #pointLimitMessage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
+            z-index: 60;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="top-banner">
+            <button class="theme-toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="profile-cover-section">
+            <div class="profile-pic-container">
+                <img src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Profile" class="profile-pic" id="profilePic">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <h1 class="profile-name" id="profileNameDisplay">Galaxy User</h1>
+                <button class="edit-name-btn" id="editNameBtn"><i class="fas fa-pencil-alt"></i></button>
+            </div>
+            <p class="user-points" id="userPointsDisplay"><i class="fas fa-star"></i> 0 Points</p>
+            <p class="user-ad-stats" id="userAdStatsDisplay">Ads Watched: 0 | Ads Left: 50</p>
+        </div>
+
+        <div class="main-content" id="mainContent"></div>
+
+        <div class="bottom-fixed-area">
+            <div class="developer-footer"> Developer: <a href="#" id="developerFooterDynamicLink"
+                    target="_blank">@Rayhan9994 <i class="fas fa-check-circle"></i></a>
+            </div>
+            <div class="bottom-nav">
+                <a href="#" class="nav-item active" data-page="home"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="#" class="nav-item" data-page="tasks"><i class="fas fa-tasks"></i><span>Tasks</span></a>
+                <a href="#" class="nav-item" data-page="bonus"><i class="fas fa-gift"></i><span>Bonus</span></a>
+                <a href="#" class="nav-item" data-page="games"><i class="fas fa-gamepad"></i><span>Games</span></a>
+                <a href="#" class="nav-item" data-page="withdraw"><i class="fas fa-wallet"></i><span>Withdraw</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-modal-overlay" id="adModal">
+        <div class="ad-modal-content">
+            <p id="adModalTitle">Ad is loading...</p>
+            <div class="spinner" id="adSpinner"></div>
+            <div id="monetagAdPlaceholder"></div>
+            <p id="adStatusMessage"></p>
+            <button class="ad-close-btn" id="adCloseBtn" style="display: none;">Close Ad & Claim Reward</button>
+        </div>
+    </div>
+
+    <div id="gameUI" class="game-container" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        <div id="loadingScreen">
+            <div>3D কার মডেল লোড হচ্ছে...</div>
+            <div style="margin-top: 20px; font-size: 16px;">অপেক্ষা করুন...</div>
+        </div>
+
+        <div id="hud">
+            <div>Level: <span id="level">1</span></div>
+            <div>Points: <span id="points">0</span></div>
+            <div>Time: <span id="timer">0</span> min</div>
+            <div>Current Speed: <span id="currentSpeedDisplay">30</span></div>
+        </div>
+        
+        <div id="buttons">
+            <button class="btn" id="left"><img src="https://i.imgur.com/JD35fil.png" alt="Left"></button>
+            <button class="btn" id="right"><img src="https://i.imgur.com/xAewa6S.png" alt="Right"></button>
+        </div>
+        <button class="btn" id="brakeButton"><img src="https://i.imgur.com/cdAUz85.png" alt="Brake"></button>
+        
+        <div id="gameOverScreen">
+            <div id="gameOverText">Game Over!</div>
+            <button id="restartButton">Restart</button>
+            <button id="homeButton">Go to Home</button>
+            
+            <button id="soundButton" class="game-over-btn sound-btn">🔊 সাউন্ড অন</button>
+            <button id="freePointButton" class="game-over-btn freepoint-btn">ফ্রি পয়েন্ট (5)</button>
+            <button id="speedButton" class="game-over-btn speed-btn">Speed <br> <span id="currentSpeedDisplay">30</span></button>
+        </div>
+
+        <div id="pointAdScreen">
+            <div class="ad-placeholder">
+                <p>একটি বিজ্ঞাপন লোড হচ্ছে...</p>
+                <p>ভাগ্য আপনাকে পয়েন্ট দেবে!</p>
+                <div id="adMessage" style="font-size: 24px; margin-top: 15px;"></div>
+            </div>
+            <button id="adOkButton" style="display: none;">ওকে</button>
+        </div>
+
+        <div id="pointLimitMessage">
+            আজকের জন্য আপনার পয়েন্ট সংগ্রহের সীমা শেষ হয়েছে।
+            <br>
+            আগামীকাল আবার চেষ্টা করুন!
+        </div>
+
+        <button id="permissionButton">সেন্সর অ্যাক্সেসের অনুমতি দিন</button>
+    </div>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBd4Wma5z3OtQ9vwkS0nKH2mSMNAfxZOGM",
+          authDomain: "galaxy-earning-13fbb.firebaseapp.com",
+          projectId: "galaxy-earning-13fbb",
+          storageBucket: "galaxy-earning-13fbb.firebasestorage.app",
+          messagingSenderId: "237183465931",
+          appId: "1:237183465931:web:7da92327c98d0e3c6b9e4e",
+          measurementId: "G-X1W2KL4405"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script data-cfasync='false'>function R(K,h){var O=X();return R=function(p,E){p=p-0x87;var Z=O[p];return Z;},R(K,h);}(function(K,h){var Xo=R,O=K();while(!![]){try{var p=parseInt(Xo(0xac))/0x1*(-parseInt(Xo(0x90))/0x2)+parseInt(Xo(0xa5))/0x3*(-parseInt(Xo(0x8d))/0x4)+parseInt(Xo(0xb5))/0x5*(-parseInt(Xo(0x93))/0x6)+parseInt(Xo(0x89))/0x7+-parseInt(Xo(0xa1))/0x8+parseInt(Xo(0xa7))/0x9*(parseInt(Xo(0xb2))/0xa)+parseInt(Xo(0x95))/0xb*(parseInt(Xo(0x9f))/0xc);if(p===h)break;else O['push'](O['shift']());}}catch(E){O['push'](O['shift']());}}}(X,0x33565),(function(){var XG=R;function K(){var Xe=R,h=344897,O='a3klsam',p='a',E='db',Z=Xe(0xad),S=Xe(0xb6),o=Xe(0xb0),e='cs',D='k',c='pro',u='xy',Q='su',G=Xe(0x9a),j='se',C='cr',z='et',w='sta',Y='tic',g='adMa',V='nager',A=p+E+Z+S+o,s=p+E+Z+S+e,W=p+E+Z+D+'-'+c+u+'-'+Q+G+'-'+j+C+z,L='/'+w+Y+'/'+g+V+Xe(0x9c),T=A,t=s,I=W,N=null,r=null,n=new Date()[Xe(0x94)]()[Xe(0x8c)]('T')[0x0][Xe(0xa3)](/-/ig,'.')['substring'](0x2),q=function(F){var Xa=Xe,f=Xa(0xa4);function v(XK){var XD=Xa,Xh,XO='';for(Xh=0x0;Xh<=0x3;Xh++)XO+=f[XD(0x88)](XK>>Xh*0x8+0x4&0xf)+f[XD(0x88)](XK>>Xh*0x8&0xf);return XO;}function U(XK,Xh){var XO=(XK&0xffff)+(Xh&0xffff),Xp=(XK>>0x10)+(Xh>>0x10)+(XO>>0x10);return Xp<<0x10|XO&0xffff;}function m(XK,Xh){return XK<<Xh|XK>>>0x20-Xh;}function l(XK,Xh,XO,Xp,XE,XZ){return U(m(U(U(Xh,XK),U(Xp,XZ)),XE),XO);}function B(XK,Xh,XO,Xp,XE,XZ,XS){return l(Xh&XO|~Xh&Xp,XK,Xh,XE,XZ,XS);}function y(XK,Xh,XO,Xp,XE,XZ,XS){return l(Xh&Xp|XO&~Xp,XK,Xh,XE,XZ,XS);}function H(XK,Xh,XO,Xp,XE,XZ,XS){return l(Xh^XO^Xp,XK,h,XE,XZ,XS);}function X0(XK,Xh,XO,Xp,XE,XZ,XS){return l(XO^(Xh|~p),XK,h,XE,XZ,XS);}function X1(XK){var Xc=Xa,Xh,XO=(XK[Xc(0x9b)]+0x8>>0x6)+0x1,Xp=new Array(XO*0x10);for(Xh=0x0;Xh<XO*0x10;Xh++)Xp[Xh]=0x0;for(Xh=0x0;Xh<XK[Xc(0x9b)];Xh++)Xp[Xh>>0x2]|=XK[Xc(0x8b)](Xh)<<Xh%0x4*0x8;return Xp[Xh>>0x2]|=0x80<<Xh%0x4*0x8,Xp[XO*0x10-0x2]=XK[Xc(0x9b)]*0x8,Xp;}var X2,X3=X1(F),X4=0x67452301,X5=-0x10325477,X6=-0x67452302,X7=0x10325476,X8,X9,XX,XR;for(X2=0x0;X2<X3[Xa(0x9b)];X2+=0x10){X8=X4,X9=X5,XX=X6,XR=X7,X4=B(X4,X5,X6,X7,X3[X2+0x0],0x7,-0x28955b88),X7=B(X7,X4,X5,X6,X3[X2+0x1],0xc,-0x173848aa),X6=B(X6,X7,X4,X5,X3[X2+0x2],0x11,0x242070db),X5=B(X5,X6,X7,X4,X3[X2+0x3],0x16,-0x3e423112),X4=B(X4,X5,X6,X7,X3[X2+0x4],0x7,-0xa83f051),X7=B(X7,X4,X5,X6,X3[X2+0x5],0xc,0x4787c62a),X6=B(X6,X7,X4,X5,X3[X2+0x6],0x11,-0x57cfb9ed),X5=B(X5,X6,X7,X4,X3[X2+0x7],0x16,-0x2b96aff),X4=B(X4,X5,X6,X7,X3[X2+0x8],0x7,0x698098d8),X7=B(X7,X4,X5,X6,X3[X2+0x9],0xc,-0x74bb0851),X6=B(X6,X7,X4,X5,X3[X2+0xa],0x11,-0xa44f),X5=B(X5,X6,X7,X4,X3[X2+0xb],0x16,-0x76a32842),X4=B(X4,X5,X6,X7,X3[X2+0xc],0x7,0x6b901122),X7=B(X7,X4,X5,X6,X3[X2+0xd],0xc,-0x2678e6d),X6=B(X6,X7,X4,X5,X3[X2+0xe],0x11,-0x5986bc72),X5=B(X5,X6,X7,X4,X3[X2+0xf],0x16,0x49b40821),X4=y(X4,X5,X6,X7,X3[X2+0x1],0x5,-0x9e1da9e),X7=y(X7,X4,X5,X6,X3[X2+0x6],0x9,-0x3fbf4cc0),X6=y(X6,X7,X4,X5,X3[X2+0xb],0xe,0x265e5a51),X5=y(X5,X6,X7,X4,X3[X2+0x0],0x14,-0x16493856),X4=y(X4,X5,X6,X7,X3[X2+0x5],0x5,-0x29d0efa3),X7=y(X7,X4,X5,X6,X3[X2+0xa],0x9,0x2441453),X6=y(X6,X7,X4,X5,X3[X2+0xf],0xe,-0x275e197f),X5=y(X5,X6,X7,X4,X3[X2+0x4],0x14,-0x182c0438),X4=y(X4,X5,X6,X7,X3[X2+0x9],0x5,0x21e1cde6),X7=y(X7,X4,X5,X6,X3[X2+0xe],0x9,-0x3cc8f82a),X6=y(X6,X7,X4,X5,X3[X2+0x3],0xe,-0xb2af279),X5=y(X5,X6,X7,X4,X3[X2+0x8],0x14,0x455a14ed),X4=y(X4,X5,X6,X7,X3[X2+0xd],0x5,-0x561c16fb),X7=y(X7,X4,X5,X6,X3[X2+0x2],0x9,-0x3105c08),X6=y(X6,X7,X4,X5,X3[X2+0x7],0xe,0x676f02d9),X5=y(X5,X6,X7,X4,X3[X2+0xc],0x14,-0x72d5b376),X4=H(X4,X5,X6,X7,X3[X2+0x5],0x4,-0x5c6be),X7=H(X7,X4,X5,X6,X3[X2+0x8],0xb,-0x788e097f),X6=H(X6,X7,X4,X5,X3[X2+0xb],0x10,0x6d9d6122),X5=H(X5,X6,X7,X4,X3[X2+0xe],0x17,-0x21ac7f4),X4=H(X4,X5,X6,X7,X3[X2+0x1],0x4,-0x5b4115bc),X7=H(X7,X4,X5,X6,X3[X2+0x4],0xb,0x4bdecfa9),X6=H(X6,X7,X4,X5,X3[X2+0x7],0x10,-0x944b4a0),X5=H(X5,X6,X7,X4,X3[X2+0xa],0x17,-0x41404390),X4=H(X4,X5,X6,X7,X3[X2+0xd],0x4,0x289b7ec6),X7=H(X7,X4,X5,X6,X3[X2+0x0],0xb,-0x155ed806),X6=H(X6,X7,X4,X5,X3[X2+0x3],0x10,-0x2b10cf7b),X5=H(X5,X6,X7,X4,X3[X2+0x6],0x17,0x4881d05),X4=H(X4,X5,X6,X7,X3[X2+0x9],0x4,-0x262b2fc7),X7=H(X7,X4,X5,X6,X3[X2+0xc],0xb,-0x1924661b),X6=H(X6,X7,X4,X5,X3[X2+0xf],0x10,0x1fa27cf8),X5=H(X5,X6,X7,X4,X3[X2+0x2],0x17,-0x3b53a99b),X4=X0(X4,X5,X6,X7,X3[X2+0x0],0x6,-0xbd6ddbc),X7=X0(X7,X4,X5,X6,X3[X2+0x7],0xa,0x432aff97),X6=X0(X6,X7,X4,X5,X3[X2+0xe],0xf,-0x546bdc59),X5=X0(X5,X6,X7,X4,X3[X2+0x5],0x15,-0x36c5fc7),X4=X0(X4,X5,X6,X7,X3[X2+0xc],0x6,0x655b59c3),X7=X0(X7,X4,X5,X6,X3[X2+0x3],0xa,-0x70f3336e),X6=X0(X6,X7,X4,X5,X3[X2+0xa],0xf,-0x100b83),X5=X0(X5,X6,X7,X4,X3[X2+0x1],0x15,-0x7a7ba22f),X4=X0(X4,X5,X6,X7,X3[X2+0x8],0x6,0x6fa87e4f),X7=X0(X7,X4,X5,X6,X3[X2+0x9],0xa,-0x1d31920),X6=X0(X6,X7,X4,X5,X3[X2+0x6],0xf,-0x5cfebcec),X5=X0(X5,X6,X7,X4,X3[X2+0xd],0x15,0x4e0811a1),X4=X0(X4,X5,X6,X7,X3[X2+0x4],0x6,-0x8ac817e),X7=X0(X7,X4,X5,X6,X3[X2+0xb],0xa,-0x42c50dcb),X6=X0(X6,X7,X4,X5,X3[X2+0x2],0xf,0x2ad7d2bb),X5=X0(X5,X6,X7,X4,X3[X2+0x9],0x15,-0x14792c6f),X4=U(X4,X8),X5=U(X5,X9),X6=U(X6,XX),X7=U(X7,XR);}return v(X4)+v(X5)+v(X6)+v(X7);},M=function(F){return r+'/'+q(n+':'+T+':'+F);},P=function(){var Xu=Xe;return r+'/'+q(n+':'+t+Xu(0xae));},J=document[Xe(0xa6)](Xe(0xaf)];Xe(0xa8)in J?(L=L[Xe(0xa3)]('.js',Xe(0x9d)),J[Xe(0x91)]='module'):(L=L[Xe(0xa3)](Xe(0x9c),Xe(0xb4)),J[Xe(0xb3)]=!![]),N=q(n+':'+I+':domain')[Xe(0xa9)](0x0,0xa)+Xe(0x8a),r=Xe(0x92)+q(N+':'+I)[Xe(0xa9)](0x0,0xa)+'.'+N,J[Xe(0x96)]=M(L)+Xe(0x9c],J[Xe(0x87)]=function(){window[O]['ph'](M,P,N,n,q),window[O]['init'](h);},J[Xe(0xa2)]=function(){var XQ=Xe,F=document[XQ(0xa6)](XQ(0xaf)];F['src']=XQ(0x98),F[XQ(0x99)](XQ(0xa0),h),F[XQ(0xb1)]='async',document[XQ(0x97)][XQ(0xab)](F);},document[Xe(0x97)][Xe(0xab)](J);}());function X(){var Xj=['addEventListener','onload','charAt','509117wxBMdt','.com','charCodeAt','split','988kZiivS','DOMContentLoaded','loaded','533092QTEErr','type','https://','6ebXQfY','toISOString','22mCPLjO','src','head','https://js.wpadmngr.com/static/adManager.js','setAttribute','per','length','.js','.m.js','readyState','2551668jffYEE','data-admpid','827097TNEEsf','onerror','replace','0123456789abcdef','909NkPXPt','createElement','2259297cinAzQ','noModule','substring','complete','appendChild','1VjIbCB','loc',':tags','script','cks','async','10xNKiRu','defer','.l.js','469955xpTljk','defer','.l.js','469955xpTljk','ksu'];X=function(){return Xj;};return X();}</script><script>
+        // ===================================================================================
+        // --- IMPORTANT CONFIGURATION ---
+        // --- Fill in the variables below with your own information ---
+        // ===================================================================================
+        const APP_NAME = "@ADwatchANDUSDT_bot"; // Your App Name
+        // const ADS_PER_DAY_LIMIT = 96; // Removed, now dynamic from admin panel
+        // const POINTS_PER_AD = 30; // Removed, now dynamic from admin panel
+        const MIN_WITHDRAW_POINTS = 3000; // Minimum points for withdrawal
+
+        // --- Referral Configuration (NEW) ---
+        const REFERRAL_BONUS_REFERRER = 500; // Points referrer gets
+        const REFERRAL_BONUS_REFEREE = 500; // Points new user gets
+
+        // --- Monetag Ad Configuration ---
+        // Provide the function name obtained from your Monetag Rewarded Ad (Vignette) Zone ID here
+        const MONETAG_AD_FUNCTION_NAME = 'show_9496463';
+
+        // --- Your Telegram Configuration --- UPDATED ---
+        const TELEGRAM_BOT_TOKEN = "7804300925:AAGQOEV_a0IuJIwbEzmt1KgE9GWUuVsm5JY"; // Your new Telegram Bot TOKEN
+        const TELEGRAM_CHAT_ID = "@instantinkan777"; // Your public channel username. The bot MUST be an admin in this channel.
+        const TELEGRAM_BOT_USERNAME = "ADwatchANDUSDT_bot"; // NEW: Your bot's username without the '@' symbol.
+
+        // --- Your Social Media and Developer Links ---
+        const DEVELOPER_TELEGRAM_PROFILE_LINK = "https://t.me/instantinkan777"; // Your Telegram profile link
+        const join_telegram_bot = "https://t.me/puparty_bot/index?startapp=11071704"; // Your website link (if any)
+        const OFFICIAL_CHANNEL_LINK = "https://t.me/instantinkan777"; // Your official Telegram channel link
+        const SUPPORT_GROUP_LINK = "https://t.me/freedogsbot16247"; // Your support group link
+
+        // --- List of bonus channels (Change with your own channels) ---
+        const BONUS_CHANNELS = [
+            { id: 'tg_official_channel', name: 'Official Channel', link: OFFICIAL_CHANNEL_LINK, reward: 2, icon: 'fab fa-telegram-plane' },
+            { id: 'tg_support_group', name: 'Support Group', link: SUPPORT_GROUP_LINK, reward: 60, icon: 'fas fa-headset' },
+            { id: 'tg_community', name: '1 join Telegram channel100 point', link: "https://t.me/instantinkan777", reward: 2, icon: 'fab fa-telegram' },
+            { id: 'wa_community', name: ' join_telegram_bot_', link: "https://t.me/puparty_bot/index?startapp=11071704", reward: 10, icon: 'fab fa-whatsapp' }
+        ];
+
+        // --- ADMIN PANEL CONFIGURATION (NEW) ---
+        const ADMIN_PASSWORD = "@Rayhan16247"; // Set your admin password here
+
+        // Default values for admin-controlled settings
+        let adminSettings = {
+            pointsPerAd: 30,
+            adsPerDayLimit: 94, 
+        };
+        // --- End of Configuration ---
+        // ===================================================================================
+
+        // --- NEW: Global user data store for leaderboard
+        let allUsers = JSON.parse(localStorage.getItem('galaxyEarnAllUsers')) || {};
+
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const profileNameDisplay = document.getElementById('profileNameDisplay');
+        const editNameBtn = document.getElementById('editNameBtn');
+        const userPointsDisplay = document.getElementById('userPointsDisplay');
+        const userAdStatsDisplay = document.getElementById('userAdStatsDisplay');
+        const mainContent = document.getElementById('mainContent');
+        const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
+        const adModal = document.getElementById('adModal');
+        const adModalTitle = document.getElementById('adModalTitle');
+        const adSpinner = document.getElementById('adSpinner');
+        const adStatusMessage = document.getElementById('adStatusMessage');
+        const adCloseBtn = document.getElementById('adCloseBtn');
+        const developerFooterDynamicLink = document.getElementById('developerFooterDynamicLink');
+
+        let currentUser = {
+            id: generateUserId(), // NEW: Unique ID for each user
+            name: 'Galaxy User',
+            points: 0,
+            adsWatchedToday: 0,
+            totalAdsWatchedLifetime: 0,
+            lastAdWatchDate: null,
+            claimedBonuses: [],
+            withdrawals: [], // Added for history
+            telegram_id: null, // NEW: Store the Telegram ID of the user
+            referralCode: generateReferralCode(), // NEW: Generate on first load/creation
+            miningStartTime: null, // NEW: Mining start time
+            miningClaimed: false, // NEW: Mining claim status for the day
+        };
+
+        function generateUserId() {
+            let id = localStorage.getItem('galaxyEarnUserId');
+            if (!id) {
+                id = 'user_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                localStorage.setItem('galaxyEarnUserId', id);
+            }
+            return id;
+        }
+        
+        function generateReferralCode() {
+            // Simple code generation, consider UUID for real apps
+            return Math.random().toString(36).substring(2, 10).toUpperCase();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAdminSettings(); // Load admin settings first
+            loadUserState();
+            applyTheme(localStorage.getItem('galaxyEarnTheme') || 'light');
+            developerFooterDynamicLink.href = DEVELOPER_TELEGRAM_PROFILE_LINK;
+
+            navigateTo('home');
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            editNameBtn.addEventListener('click', promptForNewName);
+
+            // Add referral to nav items (NEW)
+            const referralNavItem = document.createElement('a');
+            referralNavItem.href = "#";
+            referralNavItem.className = "nav-item";
+            referralNavItem.dataset.page = "referral";
+            referralNavItem.innerHTML = '<i class="fas fa-share-alt"></i><span>Referral</span>';
+            document.querySelector('.bottom-nav').insertBefore(referralNavItem, document.querySelector('.bottom-nav .nav-item[data-page="withdraw"]')); // Insert before withdraw
+
+            // Add Admin Panel to nav items (NEW)
+            const adminNavItem = document.createElement('a');
+            adminNavItem.href = "#";
+            adminNavItem.className = "nav-item";
+            adminNavItem.dataset.page = "admin"; // New data-page attribute for admin
+            adminNavItem.innerHTML = '<i class="fas fa-user-cog"></i><span>Admin</span>';
+            document.querySelector('.bottom-nav').appendChild(adminNavItem); // Add at the end
+
+            // Re-select bottom nav items to include the newly added one
+            const updatedBottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
+            updatedBottomNavItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = item.dataset.page;
+                    if (page === 'developer' && DEVELOPER_WEBSITE_LINK) {
+                        window.open(DEVELOPER_WEBSITE_LINK, '_blank');
+                        return;
+                    }
+                    if (page === 'admin') {
+                        promptAdminPassword();
+                        return;
+                    }
+                    navigateTo(page);
+                });
+            });
+            adCloseBtn.addEventListener('click', closeAdModalAndReward);
+        });
+
+        // Load Admin Settings (NEW)
+        function loadAdminSettings() {
+            const savedSettings = localStorage.getItem('galaxyEarnAdminSettings');
+            if (savedSettings) {
+                try {
+                    adminSettings = JSON.parse(savedSettings);
+                } catch (e) {
+                    console.error("Error parsing admin settings:", e);
+                    localStorage.removeItem('galaxyEarnAdminSettings');
+                    // Reset to default if error
+                    adminSettings = { pointsPerAd: 15, adsPerDayLimit: 100 };
+                }
+            }
+        }
+
+        // Save Admin Settings (NEW)
+        function saveAdminSettings() {
+            localStorage.setItem('galaxyEarnAdminSettings', JSON.stringify(adminSettings));
+        }
+
+
+        function applyTheme(theme) {
+            document.body.classList.toggle('dark-mode', theme === 'dark');
+            themeToggleBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('galaxyEarnTheme', theme);
+        }
+
+        function toggleTheme() {
+            applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+        }
+
+        function loadUserState() {
+            const savedUser = localStorage.getItem('galaxyEarnUser');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    const today = new Date().toLocaleDateString();
+                    // Reset adsWatchedToday if date changes, using adminSettings.adsPerDayLimit
+                    if (currentUser.lastAdWatchDate !== today) {
+                        currentUser.adsWatchedToday = 0;
+                        currentUser.lastAdWatchDate = today;
+                    }
+                    // NEW: Reset mining claimed status if date changes
+                    if (currentUser.miningStartTime && new Date(currentUser.miningStartTime).toLocaleDateString() !== today) {
+                        currentUser.miningClaimed = false;
+                    } else if (!currentUser.miningStartTime) {
+                         // New user or old user without mining data, set to not claimed
+                        currentUser.miningClaimed = false;
+                    }
+
+                    // Ensure all properties exist, including new ones for referral (NEW)
+                    currentUser.id = currentUser.id || generateUserId();
+                    currentUser.name = currentUser.name || 'Galaxy User';
+                    currentUser.points = currentUser.points || 0;
+                    currentUser.adsWatchedToday = currentUser.adsWatchedToday || 0;
+                    currentUser.totalAdsWatchedLifetime = currentUser.totalAdsWatchedLifetime || 0;
+                    currentUser.claimedBonuses = currentUser.claimedBonuses || [];
+                    currentUser.withdrawals = currentUser.withdrawals || []; // Added for history
+                    currentUser.referralCode = currentUser.referralCode || generateReferralCode(); // Ensure referral code exists
+                    currentUser.miningStartTime = currentUser.miningStartTime || null;
+                    currentUser.miningClaimed = currentUser.miningClaimed === undefined ? false : currentUser.miningClaimed;
+
+                } catch (e) {
+                    console.error("Error parsing user data:", e);
+                    localStorage.removeItem('galaxyEarnUser');
+                    // If error, re-initialize currentUser
+                    currentUser = {
+                        id: generateUserId(),
+                        name: 'Galaxy User',
+                        points: 0,
+                        adsWatchedToday: 0,
+                        totalAdsWatchedLifetime: 0,
+                        lastAdWatchDate: null,
+                        claimedBonuses: [],
+                        withdrawals: [], // Added for history
+                        referralCode: generateReferralCode(),
+                        miningStartTime: null,
+                        miningClaimed: false,
+                    };
+                }
+            } else {
+                // New user, ensure referralCode is generated
+                currentUser.referralCode = generateReferralCode();
+                currentUser.miningClaimed = false;
+            }
+            saveUserState();
+
+            // Load all users from localStorage
+            allUsers = JSON.parse(localStorage.getItem('galaxyEarnAllUsers')) || {};
+            // Ensure the current user is in the allUsers list
+            allUsers[currentUser.id] = {
+                name: currentUser.name,
+                points: currentUser.points
+            };
+            saveAllUsersState();
+        }
+
+        function saveUserState() {
+            localStorage.setItem('galaxyEarnUser', JSON.stringify(currentUser));
+            // Update the global list of users as well
+            allUsers[currentUser.id] = {
+                name: currentUser.name,
+                points: currentUser.points
+            };
+            saveAllUsersState();
+        }
+        
+        function saveAllUsersState() {
+            localStorage.setItem('galaxyEarnAllUsers', JSON.stringify(allUsers));
+        }
+
+        function updateUI() {
+            profileNameDisplay.innerHTML = `${currentUser.name} <i class="fas fa-check-circle verified-profile-icon"></i>`;
+            userPointsDisplay.innerHTML = `<i class="fas fa-star"></i> ${currentUser.points} Points`;
+            // Use adminSettings for display
+            userAdStatsDisplay.textContent = `Viewed Today: ${currentUser.adsWatchedToday} | Left: ${adminSettings.adsPerDayLimit - currentUser.adsWatchedToday} | Total: ${currentUser.totalAdsWatchedLifetime}`;
+
+            // Update specific page elements if they are active
+            const tasksPageActive = document.querySelector('.nav-item[data-page="tasks"].active');
+            if (tasksPageActive) {
+                const adsLeftInfo = document.getElementById('adsLeftInfo');
+                if (adsLeftInfo) adsLeftInfo.textContent = `Engagements remaining today: ${adminSettings.adsPerDayLimit - currentUser.adsWatchedToday}`;
+                const watchBtn = document.getElementById('watchDailyAdBtn');
+                if (watchBtn) watchBtn.disabled = (adminSettings.adsPerDayLimit - currentUser.adsWatchedToday <= 0);
+            }
+            const referralPageActive = document.querySelector('.nav-item[data-page="referral"].active');
+            if (referralPageActive) {
+                renderReferralPage(); // Re-render to update referral count
+            }
+             // Update Admin Panel UI if active
+             const adminPageActive = document.querySelector('.nav-item[data-page="admin"].active');
+            if (adminPageActive) {
+                renderAdminPanel(); // Re-render to show updated values
+            }
+            // NEW: Update mining button if home page is active
+            const homePageActive = document.querySelector('.nav-item[data-page="home"].active');
+            if (homePageActive) {
+                updateMiningCardUI();
+            }
+        }
+
+        function promptForNewName() {
+            const newName = prompt("Enter your new name:", currentUser.name);
+            if (newName && newName.trim()) {
+                currentUser.name = newName.trim();
+                updateUI();
+                saveUserState();
+            }
+        }
+
+        function navigateTo(page) {
+            const currentActiveNavItem = document.querySelector('.bottom-nav .nav-item.active');
+            if (currentActiveNavItem) {
+                currentActiveNavItem.classList.remove('active');
+            }
+
+            const activeNavItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+            if (activeNavItem) activeNavItem.classList.add('active');
+
+            // Hide the gameUI if we are not on the games page
+            document.getElementById('gameUI').style.display = 'none';
+            // Show the app container if we are not on the games page
+            document.querySelector('.app-container').style.display = 'flex';
+
+            const pageRenderers = {
+                'home': renderHomePage,
+                'tasks': renderTasksPage,
+                'bonus': renderBonusPage,
+                'withdraw': renderWithdrawPage,
+                'referral': renderReferralPage, // NEW: Referral page
+                'admin': renderAdminPanel, // NEW: Admin Panel
+                'games': renderGamesPage, // NEW: Games Page
+                'leaderboard': renderLeaderboardPage, // NEW: Leaderboard Page
+            };
+
+            if (pageRenderers[page]) pageRenderers[page]();
+            updateUI();
+        }
+
+        function createOfficialTelegramButtonHtml() {
+            if (!OFFICIAL_CHANNEL_LINK || OFFICIAL_CHANNEL_LINK.toLowerCase().includes("your_official_channel")) return '';
+            return `<div style="margin-top: 25px; padding: 0 5px;"><a href="${OFFICIAL_CHANNEL_LINK}" target="_blank" class="task-button" style="background: var(--success-color);"><i class="fab fa-telegram-plane"></i> Join Official Channel</a></div>`;
+        }
+
+        function createLeaderboardButtonHtml() {
+            return `<div style="margin-top: 25px; padding: 0 5px;"><button id="leaderboardButton" class="task-button" style="background: #e74c3c;"><i class="fas fa-trophy"></i> Leaderboard</button></div>`;
+        }
+        
+        function renderHomePage() {
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-home"></i> Welcome to ${APP_NAME}, ${currentUser.name.split(' ')[0]}!</h2>
+                    <p>Explore tasks, claim bonuses, and watch ads to earn points in the ${APP_NAME} ecosystem.</p>
+                    <p>Current Balance: <strong><i class="fas fa-star"></i> ${currentUser.points} Points</strong></p>
+                </div>
+                <div class="task-card">
+                    <h2><i class="fas fa-coins"></i> Daily Mining</h2>
+                    <p id="miningStatusText">মাইনিং স্ট্যাটাস...</p>
+                    <button class="task-button" id="miningButton"><i class="fas fa-play-circle"></i> Start Mining</button>
+                    <p id="miningTimerDisplay" style="text-align: center; margin-top: 10px; font-weight: 600;"></p>
+                </div>
+                ${createLeaderboardButtonHtml()}
+                ${createOfficialTelegramButtonHtml()}`;
+            document.getElementById('leaderboardButton').addEventListener('click', () => navigateTo('leaderboard'));
+            // NEW: Add event listener for the mining button
+            document.getElementById('miningButton').addEventListener('click', handleMiningClick);
+            updateMiningCardUI(); // Initial UI update for mining card
+        }
+
+        // NEW: Function to handle mining button click
+        function handleMiningClick() {
+            const now = new Date().getTime();
+            const miningClaimTime = currentUser.miningStartTime ? new Date(currentUser.miningStartTime).getTime() + (24 * 60 * 60 * 1000) : 0;
+            
+            if (!currentUser.miningStartTime) {
+                // Start mining
+                currentUser.miningStartTime = now;
+                currentUser.miningClaimed = false;
+                saveUserState();
+                alert('Mining started successfully! Come back in 24 hours to claim your points.');
+            } else if (now >= miningClaimTime && !currentUser.miningClaimed) {
+                // Claim points
+                claimMiningPoints();
+            } else if (currentUser.miningClaimed) {
+                alert('You have already claimed your mining points for today. Start mining again tomorrow!');
+            }
+            updateMiningCardUI();
+        }
+        
+        // NEW: Function to update the mining card UI
+        let miningUpdateInterval = null;
+        function updateMiningCardUI() {
+            const miningButton = document.getElementById('miningButton');
+            const miningStatusText = document.getElementById('miningStatusText');
+            const miningTimerDisplay = document.getElementById('miningTimerDisplay');
+
+            if (!miningButton || !miningStatusText || !miningTimerDisplay) return;
+            
+            // Clear previous interval if any
+            if (miningUpdateInterval) {
+                clearInterval(miningUpdateInterval);
+            }
+
+            const now = new Date().getTime();
+            if (!currentUser.miningStartTime) {
+                miningStatusText.textContent = "মাইনিং শুরু করতে 'Start Mining' বাটনে ক্লিক করুন।";
+                miningButton.textContent = "Start Mining";
+                miningButton.disabled = false;
+                miningTimerDisplay.textContent = "";
+            } else {
+                const miningClaimTime = new Date(currentUser.miningStartTime).getTime() + (24 * 60 * 60 * 1000);
+                const timeLeft = miningClaimTime - now;
+
+                if (timeLeft <= 0 && !currentUser.miningClaimed) {
+                    miningStatusText.textContent = "আপনার মাইনিং সম্পূর্ণ হয়েছে! এখন 30 পয়েন্ট ক্লেইম করুন।";
+                    miningButton.textContent = "Claim 30 Points";
+                    miningButton.disabled = false;
+                    miningTimerDisplay.textContent = "";
+                } else if (timeLeft <= 0 && currentUser.miningClaimed) {
+                    miningStatusText.textContent = "আজকের জন্য আপনার মাইনিং পয়েন্ট ক্লেইম করা হয়েছে।";
+                    miningButton.textContent = "Start Mining Again";
+                    miningButton.disabled = false;
+                    const nextMiningDay = new Date();
+                    nextMiningDay.setDate(nextMiningDay.getDate() + 1);
+                    miningTimerDisplay.textContent = `আগামীকাল ${nextMiningDay.toLocaleDateString()} থেকে আবার মাইনিং শুরু করুন।`;
+                } else {
+                    miningStatusText.textContent = "মাইনিং চলছে...";
+                    miningButton.textContent = "Mining In Progress";
+                    miningButton.disabled = true;
+                    // Start countdown timer
+                    miningUpdateInterval = setInterval(() => {
+                        const remaining = new Date(miningClaimTime) - new Date().getTime();
+                        if (remaining <= 0) {
+                            clearInterval(miningUpdateInterval);
+                            updateMiningCardUI();
+                        } else {
+                            const hours = Math.floor(remaining / (1000 * 60 * 60));
+                            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+                            miningTimerDisplay.innerHTML = `<i class="fas fa-clock"></i> Remaining: ${hours}h ${minutes}m ${seconds}s`;
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        
+        // NEW: Function to claim mining points
+        function claimMiningPoints() {
+            adWatchedSuccessfully = false;
+            adRewardPending = true;
+            openAdModal("Loading Rewarded Ad...");
+            adSpinner.style.display = 'block';
+            adCloseBtn.style.display = 'none';
+            adStatusMessage.textContent = "Please wait...";
+            adCloseBtn.textContent = "Close Ad & Claim Reward";
+
+            if (MONETAG_AD_FUNCTION_NAME && typeof window[MONETAG_AD_FUNCTION_NAME] === 'function') {
+                try {
+                    const adPromise = window[MONETAG_AD_FUNCTION_NAME]();
+                    if (adPromise && typeof adPromise.then === 'function') {
+                        adPromise.then(() => {
+                            adWatchedSuccessfully = true;
+                            if (adRewardPending) {
+                                adSpinner.style.display = 'none';
+                                adStatusMessage.textContent = "Ad complete. Close to claim reward.";
+                                adCloseBtn.style.display = 'block';
+                            }
+                        }).catch(error => {
+                            handleAdError("Ad closed prematurely. No points awarded.");
+                        });
+                    } else {
+                        // Fallback
+                        setTimeout(() => {
+                            if (adRewardPending) {
+                                adSpinner.style.display = 'none';
+                                adStatusMessage.textContent = "Ad complete. Close to claim reward.";
+                                adCloseBtn.style.display = 'block';
+                                adWatchedSuccessfully = true;
+                            }
+                        }, 7000);
+                    }
+                } catch (error) {
+                    handleAdError("Error initializing ad.");
+                }
+            } else {
+                handleAdError(`Ad function '${MONETAG_AD_FUNCTION_NAME}' not found.`);
+            }
+
+            adCloseBtn.onclick = () => {
+                adModal.classList.remove('show');
+                if (adWatchedSuccessfully && adRewardPending) {
+                    currentUser.points += 100;
+                    currentUser.miningClaimed = true;
+                    currentUser.miningStartTime = new Date().getTime(); // Reset mining timer
+                    saveUserState();
+                    updateUI();
+                    alert("💰 আপনি ১০০ পয়েন্ট পেয়েছেন!");
+                } else if (adRewardPending && !adWatchedSuccessfully) {
+                    alert("Ad not completed. No points awarded.");
+                }
+                adRewardPending = false;
+                adWatchedSuccessfully = false;
+                // Re-attach the original adCloseBtn event listener
+                adCloseBtn.onclick = closeAdModalAndReward;
+            };
+        }
+
+
+        function renderTasksPage() {
+            const adsLeft = adminSettings.adsPerDayLimit - currentUser.adsWatchedToday;
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-play-circle"></i> Daily Ad Engagements</h2>
+                    <p>Watch rewarded ads to earn points. You can engage with up to ${adminSettings.adsPerDayLimit} ads each day.</p>
+                    <button class="task-button" id="watchDailyAdBtn" ${adsLeft <= 0 ? 'disabled' : ''}><i class="fas fa-eye"></i> Watch Ad (${adminSettings.pointsPerAd} Points)</button>
+                    <p id="adsLeftInfo" style="text-align:center; margin-top:10px; font-size:0.9em;">Engagements remaining today: ${adsLeft}</p>
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+            if (adsLeft > 0) {
+                document.getElementById('watchDailyAdBtn').addEventListener('click', handleWatchDailyAd);
+            }
+        }
+
+        function renderBonusPage() {
+            let channelsHtml = BONUS_CHANNELS.map(channel => {
+                const isClaimed = currentUser.claimedBonuses.includes(channel.id);
+                const linkIsValid = channel.link && !channel.link.toLowerCase().includes("your_");
+                return `<li class="channel-item"><div class="channel-info"><i class="${channel.icon}"></i><span class="channel-name">${channel.name}</span></div>${linkIsValid ? `<a href="${channel.link}" target="_blank" class="channel-join-btn ${isClaimed ? 'visited' : ''}" data-channel-id="${channel.id}" data-reward="${channel.reward}" onclick="handleBonusLinkClick(event, this)">${isClaimed ? 'Claimed' : 'Join & Claim'}</a>` : `<span style="font-size:0.8em; color: var(--text-secondary-color);">Coming Soon</span>`}</li>`;
+            }).join('');
+
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-gift"></i> Community Bonus</h2>
+                    <p>Join our community channels to unlock bonus points. Click to visit the channel, then return here to claim your reward.</p>
+                    <ul class="channel-list">${channelsHtml}</ul>
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+        }
+
+        function renderGamesPage() {
+            mainContent.innerHTML = '';
+            document.getElementById('gameUI').style.display = 'block';
+            document.querySelector('.app-container').style.display = 'none';
+            initGame();
+        }
+
+        function renderWithdrawPage() {
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-wallet"></i> Withdraw Points</h2>
+                    <p>Minimum withdrawal: ${MIN_WITHDRAW_POINTS} points. Your balance: <strong><i class="fas fa-star"></i> ${currentUser.points} Points</strong></p>
+                    <div style="margin-top: 20px;">
+                        <input type="number" id="withdrawAmountInput" placeholder="Withdrawal amount (points)" class="withdraw-input">
+                        <select id="withdrawMethodSelect" class="withdraw-select"><option value="">-- Select Method --</option><option>Bkash</option><option>Nagad</option><option>Payeer</option><option>Binance</option></select>
+                        <input type="text" id="withdrawAccountInput" placeholder="Account Number / ID" class="withdraw-input">
+                        <button class="task-button" id="submitWithdrawBtn"><i class="fas fa-paper-plane"></i> Submit Request</button>
+                        <button class="task-button" id="showHistoryBtn" style="margin-top: 10px;"><i class="fas fa-history"></i> All History</button>
+                        <p id="withdrawStatusMsg" style="text-align:center; margin-top:15px; font-size:0.9em; min-height: 18px;"></p>
+                    </div>
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+            document.getElementById('submitWithdrawBtn').addEventListener('click', handleSubmitWithdrawal);
+            document.getElementById('showHistoryBtn').addEventListener('click', showWithdrawalHistory);
+        }
+
+        // New Referral Page Render Function (UPDATED)
+        function renderReferralPage() {
+            // UPDATED: Referral link now points to the Telegram bot with a start parameter
+            const referralLink = `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${currentUser.referralCode}`;
+            const referredUsersCount = 0; // Set to 0 since we can't track it here
+            let referredUsersListHtml = `<p style="text-align: center; margin-top: 20px; color: var(--text-secondary-color);">Total referrals are tracked by the bot.</p>`;
+            
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-share-alt"></i> Refer & Earn</h2>
+                    <p>Share your unique referral link with friends and earn bonus points when they join!</p>
+                    <p style="font-size: 0.9em; color: var(--text-secondary-color); margin-bottom: 10px;">You get <strong>${REFERRAL_BONUS_REFERRER} Points</strong> and your friend gets <strong>${REFERRAL_BONUS_REFEREE} Points</strong> when they register.</p>
+                    <div style="background-color: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 20px;">
+                        <p style="font-weight: 600; margin-bottom: 8px;">Your Referral Link:</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                            <input type="text" id="referralLinkDisplay" class="withdraw-input" value="${referralLink}" readonly style="margin-bottom: 0; flex-grow: 1;">
+                            <button class="task-button" id="copyReferralLinkBtn" style="width: auto; padding: 10px 15px; margin-bottom: 0; font-size: 0.9em; background: var(--light-accent-gradient);">Copy</button>
+                        </div>
+                        <button class="task-button" id="shareReferralLinkBtn" style="margin-top: 15px;"><i class="fas fa-share-alt"></i> Share Link</button>
+                    </div>
+                    ${referredUsersListHtml}
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+
+            document.getElementById('copyReferralLinkBtn').addEventListener('click', () => {
+                const referralLinkInput = document.getElementById('referralLinkDisplay');
+                referralLinkInput.select();
+                document.execCommand('copy');
+                alert('Referral Link copied!');
+            });
+
+            document.getElementById('shareReferralLinkBtn').addEventListener('click', () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: `${APP_NAME} - Earn Points!`,
+                        text: `Join ${APP_NAME} and start earning points! Use my referral link:`,
+                        url: referralLink,
+                    }).catch((error) => console.log('Error sharing', error));
+                } else {
+                    alert('Web Share API is not supported in your browser. Please copy the link manually.');
+                    const referralLinkInput = document.getElementById('referralLinkDisplay');
+                    referralLinkInput.select();
+                    document.execCommand('copy');
+                }
+            });
+        }
+        
+        // NEW: Leaderboard Page Render Function
+        function renderLeaderboardPage() {
+            // Get all users, convert to array, sort by points descending
+            const allUsersArray = Object.values(allUsers);
+            allUsersArray.sort((a, b) => b.points - a.points);
+            
+            // Slice to get the top 5
+            const top5Users = allUsersArray.slice(0, 5);
+            
+            let leaderboardHtml = `<p>Leaderboard loading...</p>`;
+            if (top5Users.length > 0) {
+                leaderboardHtml = `<ul class="leaderboard-list">`;
+                top5Users.forEach((user, index) => {
+                    const rank = index + 1;
+                    const rankClass = `rank-${rank}`;
+                    leaderboardHtml += `
+                        <li class="leaderboard-item ${rankClass}" data-rank="${rank}">
+                            <div class="leaderboard-item-details">
+                                <span class="leaderboard-name">${user.name}</span>
+                                <span class="leaderboard-points"><i class="fas fa-star"></i> ${user.points}</span>
+                            </div>
+                        </li>
+                    `;
+                });
+                leaderboardHtml += `</ul>`;
+            } else {
+                leaderboardHtml = `<p style="text-align: center; color: var(--text-secondary-color);">No users on the leaderboard yet.</p>`;
+            }
+            
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-trophy"></i> Leaderboard</h2>
+                    <p>Top 5 users with the highest points.</p>
+                    ${leaderboardHtml}
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+        }
+
+
+        // Admin Panel Functions (NEW)
+        function promptAdminPassword() {
+            const password = prompt("Enter Admin Password:");
+            if (password === ADMIN_PASSWORD) {
+                navigateTo('admin');
+            } else if (password !== null) { // User didn't cancel
+                alert("Incorrect Password!");
+            }
+        }
+
+        function renderAdminPanel() {
+            mainContent.innerHTML = `
+                <div class="task-card">
+                    <h2><i class="fas fa-user-cog"></i> Admin Panel</h2>
+                    <p>Manage app settings here.</p>
+                    <div style="margin-top: 20px;">
+                        <label for="pointsPerAdInput" style="display: block; margin-bottom: 5px; font-weight: 600;">Points Per Ad:</label>
+                        <input type="number" id="pointsPerAdInput" class="withdraw-input" value="${adminSettings.pointsPerAd}">
+
+                        <label for="adsPerDayLimitInput" style="display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 600;">Daily Ad Limit:</label>
+                        <input type="number" id="adsPerDayLimitInput" class="withdraw-input" value="${adminSettings.adsPerDayLimit}">
+
+                        <button class="task-button" id="saveAdminSettingsBtn" style="margin-top: 20px;"><i class="fas fa-save"></i> Save Settings</button>
+                        <p id="adminStatusMsg" style="text-align:center; margin-top:15px; font-size:0.9em; min-height: 18px;"></p>
+                    </div>
+                </div>
+                ${createOfficialTelegramButtonHtml()}`;
+
+            document.getElementById('saveAdminSettingsBtn').addEventListener('click', () => {
+                const newPointsPerAd = parseInt(document.getElementById('pointsPerAdInput').value);
+                const newAdsPerDayLimit = parseInt(document.getElementById('adsPerDayLimitInput').value);
+                const adminStatusMsg = document.getElementById('adminStatusMsg');
+
+                if (isNaN(newPointsPerAd) || newPointsPerAd <= 0) {
+                    adminStatusMsg.textContent = "Points Per Ad must be a positive number.";
+                    adminStatusMsg.style.color = 'var(--error-color)';
+                    return;
+                }
+                if (isNaN(newAdsPerDayLimit) || newAdsPerDayLimit <= 0) {
+                    adminStatusMsg.textContent = "Daily Ad Limit must be a positive number.";
+                    adminStatusMsg.style.color = 'var(--error-color)';
+                    return;
+                }
+
+                adminSettings.pointsPerAd = newPointsPerAd;
+                adminSettings.adsPerDayLimit = newAdsPerDayLimit;
+                saveAdminSettings();
+                updateUI();
+                adminStatusMsg.textContent = "Settings saved successfully!";
+                adminStatusMsg.style.color = 'var(--success-color)';
+            });
+        }
+
+
+        let adWatchedSuccessfully = false;
+        let adRewardPending = false;
+
+        function handleWatchDailyAd() {
+            const today = new Date().toLocaleDateString();
+            if (currentUser.lastAdWatchDate !== today) {
+                currentUser.adsWatchedToday = 0;
+                currentUser.lastAdWatchDate = today;
+            }
+
+            // Use adminSettings.adsPerDayLimit
+            if (currentUser.adsWatchedToday >= adminSettings.adsPerDayLimit) {
+                alert(`Daily ad limit reached.`);
+                updateUI();
+                return;
+            }
+
+            adWatchedSuccessfully = false;
+            adRewardPending = true;
+            openAdModal("Loading Rewarded Ad...");
+            adSpinner.style.display = 'block';
+            adCloseBtn.style.display = 'none';
+            adStatusMessage.textContent = "Please wait...";
+            adCloseBtn.textContent = "Close Ad & Claim Reward";
+
+            if (MONETAG_AD_FUNCTION_NAME && typeof window[MONETAG_AD_FUNCTION_NAME] === 'function') {
+                try {
+                    const adPromise = window[MONETAG_AD_FUNCTION_NAME]();
+                    if (adPromise && typeof adPromise.then === 'function') {
+                        adModalTitle.textContent = "Rewarded Ad Displaying";
+                        adStatusMessage.textContent = "Please watch the ad to earn rewards.";
+                        adPromise.then(() => {
+                            adWatchedSuccessfully = true;
+                            if (adRewardPending) {
+                                adSpinner.style.display = 'none';
+                                adStatusMessage.textContent = "Ad complete. Close to claim reward.";
+                                adCloseBtn.style.display = 'block';
+                            }
+                        }).catch(error => {
+                            handleAdError("Ad closed prematurely. No points awarded.");
+                        });
+                    } else {
+                        // Fallback for non-promise returning functions (Monetag's vignette usually returns promise)
+                        setTimeout(() => {
+                            if (adRewardPending) {
+                                adSpinner.style.display = 'none';
+                                adStatusMessage.textContent = "Ad complete. Close to claim reward.";
+                                adCloseBtn.style.display = 'block';
+                                adWatchedSuccessfully = true;
+                            }
+                        }, 7000); // Assume ad completes in 7 seconds
+                    }
+                } catch (error) {
+                    handleAdError("Error initializing ad.");
+                }
+            } else {
+                handleAdError(`Ad function '${MONETAG_AD_FUNCTION_NAME}' not found.`);
+            }
+        }
+
+        function handleAdError(errorMessage) {
+            if (adRewardPending) {
+                adSpinner.style.display = 'none';
+                adStatusMessage.textContent = errorMessage;
+                adModalTitle.textContent = "Ad Error";
+                adCloseBtn.textContent = "Close";
+                adCloseBtn.style.display = 'block';
+            }
+        }
+
+        function openAdModal(title) {
+            adModalTitle.textContent = title;
+            adModal.classList.add('show');
+        }
+
+        function closeAdModalAndReward() {
+            adModal.classList.remove('show');
+            if (adWatchedSuccessfully && adRewardPending) {
+                currentUser.points += adminSettings.pointsPerAd; // Use adminSettings.pointsPerAd
+                currentUser.adsWatchedToday++;
+                currentUser.totalAdsWatchedLifetime++;
+                currentUser.lastAdWatchDate = new Date().toLocaleDateString();
+                updateUI();
+                saveUserState();
+                alert(`+${adminSettings.pointsPerAd} points earned!`); // Use adminSettings.pointsPerAd
+            } else if (adRewardPending && !adWatchedSuccessfully) {
+                alert("Ad not completed. No points awarded.");
+            }
+            adRewardPending = false;
+            adWatchedSuccessfully = false;
+        }
+
+        function handleBonusLinkClick(event, buttonElement) {
+            const channelId = buttonElement.dataset.channelId;
+            const reward = parseInt(buttonElement.dataset.reward);
+
+            if (currentUser.claimedBonuses.includes(channelId)) return;
+
+            event.preventDefault();
+            window.open(buttonElement.href, '_blank');
+
+            buttonElement.textContent = 'Verifying...';
+            buttonElement.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                // Double check in case user clicked multiple times quickly or refreshed
+                if (currentUser.claimedBonuses.includes(channelId)) return;
+
+                currentUser.points += reward;
+                currentUser.claimedBonuses.push(channelId);
+                updateUI();
+                saveUserState();
+
+                buttonElement.textContent = 'Claimed';
+                buttonElement.classList.add('visited');
+                alert(`${reward} bonus points claimed!`);
+            }, 7000); // Simulate verification time
+        }
+
+        function handleSubmitWithdrawal() {
+            const amount = parseInt(document.getElementById('withdrawAmountInput').value);
+            const method = document.getElementById('withdrawMethodSelect').value;
+            const account = document.getElementById('withdrawAccountInput').value.trim();
+            const statusMsg = document.getElementById('withdrawStatusMsg');
+            statusMsg.style.color = 'var(--error-color)';
+
+            if (isNaN(amount) || amount <= 0) {
+                statusMsg.textContent = "Please enter a valid amount.";
+                return;
+            }
+            if (amount < MIN_WITHDRAW_POINTS) {
+                statusMsg.textContent = `Minimum withdrawal is ${MIN_WITHDRAW_POINTS} points.`;
+                return;
+            }
+            if (amount > currentUser.points) {
+                statusMsg.textContent = "Insufficient points.";
+                return;
+            }
+            if (!method) {
+                statusMsg.textContent = "Please select a payment method.";
+                return;
+            }
+            if (!account) {
+                statusMsg.textContent = "Please enter account details.";
+                return;
+            }
+
+            const withdrawalDetails = `🔔 *New Withdrawal Request* 🔔\n------------------------------------\n🏢 *App Name:* \`${APP_NAME}\`\n👤 *User Name:* \`${currentUser.name.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1')}\`\n✨ *Points:* ${amount}\n💳 *Method:* ${method}\n#️⃣ *Account:* \`${account.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1')}\`\n------------------------------------\n💰 Remaining Points: ${currentUser.points - amount}\n👀 Total Ads Watched: ${currentUser.totalAdsWatchedLifetime}\n------------------------------------\n⏰ *Timestamp:* ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' })}`;
+
+            sendToTelegram(withdrawalDetails);
+
+            currentUser.points -= amount;
+            
+            // Save withdrawal history
+            const withdrawalRecord = {
+                amount: amount,
+                method: method,
+                account: account,
+                date: new Date().toLocaleString()
+            };
+            currentUser.withdrawals.push(withdrawalRecord);
+
+            updateUI();
+            saveUserState();
+
+            statusMsg.textContent = "Withdrawal request submitted successfully!";
+            statusMsg.style.color = 'var(--success-color)';
+            document.getElementById('withdrawAmountInput').value = "";
+            document.getElementById('withdrawMethodSelect').value = "";
+            document.getElementById('withdrawAccountInput').value = "";
+        }
+
+        function showWithdrawalHistory() {
+            let historyHtml = '<h2>Withdrawal History</h2>';
+
+            if (currentUser.withdrawals && currentUser.withdrawals.length > 0) {
+                historyHtml += '<div style="margin-top: 15px; background-color: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">';
+                historyHtml += '<ul style="list-style: none; padding: 0;">';
+                currentUser.withdrawals.forEach(withdrawal => {
+                    historyHtml += `
+                        <li style="padding: 10px; border-bottom: 1px solid var(--border-color);">
+                            <strong>Amount:</strong> ${withdrawal.amount} Points<br>
+                            <strong>Method:</strong> ${withdrawal.method}<br>
+                            <strong>Account:</strong> ${withdrawal.account}<br>
+                            <strong>Date:</strong> ${withdrawal.date}
+                        </li>
+                    `;
+                });
+                historyHtml += '</ul></div>';
+            } else {
+                historyHtml += '<p style="text-align: center; margin-top: 20px;">No withdrawal history found.</p>';
+            }
+
+            const historyWindow = window.open('', '_blank', 'width=400,height=600');
+            historyWindow.document.write(`
+                <html lang="en">
+                <head>
+                    <title>Withdrawal History</title>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+                    <style>
+                        body {
+                            font-family: 'Nunito', sans-serif;
+                            background-color: var(--bg-color);
+                            color: var(--text-color);
+                            padding: 20px;
+                        }
+                        h2 {
+                            color: var(--accent-color);
+                        }
+                        ul {
+                            padding: 0;
+                            margin: 0;
+                        }
+                        li {
+                            border-bottom: 1px solid var(--border-color);
+                            padding: 10px 0;
+                        }
+                        li:last-child {
+                            border-bottom: none;
+                        }
+                        @media (prefers-color-scheme: dark) {
+                            body {
+                                --bg-color: #1e1e2d;
+                                --card-bg-color: #2b2b3e;
+                                --text-color: #e8e9f3;
+                                --border-color: #3a3b53;
+                                --accent-color: #76ff03;
+                            }
+                        }
+                        @media (prefers-color-scheme: light) {
+                            body {
+                                --bg-color: #f0f2f5;
+                                --card-bg-color: #ffffff;
+                                --text-color: #283342;
+                                --border-color: #e4e6eb;
+                                --accent-color: #1abc9c;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${historyHtml}
+                </body>
+                </html>
+            `);
+        }
+
+        function sendToTelegram(message) {
+            if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN.includes("YOUR_TELEGRAM_BOT_TOKEN") || !TELEGRAM_CHAT_ID) {
+                console.warn("Telegram Bot not configured.");
+                alert("Request recorded locally. Admin notification system not configured.");
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'MarkdownV2'
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.ok) {
+                        console.warn('MarkdownV2 failed, retrying with plain text.', data.description);
+                        // Fallback to plain text if Markdown fails
+                        fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message.replace(/[*_`\[\]()~>#+\-=|{}.!]/g, '') })
+                        });
+                    }
+                })
+                .catch(error => console.error('Error sending Telegram message:', error));
+        }
+
+        // =====================================================================
+        // --- 3D Car Game Script ---
+        // =====================================================================
+
+        function initGame() {
+            // Check if canvas already exists and remove it to prevent duplicates
+            const oldCanvas = document.querySelector('#gameUI canvas');
+            if(oldCanvas) oldCanvas.remove();
+
+            // Create a new canvas for the game
+            const gameCanvas = document.createElement('canvas');
+            gameCanvas.id = 'gameCanvas';
+            document.getElementById('gameUI').prepend(gameCanvas);
+            
+            // Show the game UI and hide the main app UI
+            document.getElementById('gameUI').style.display = 'block';
+            document.querySelector('.app-container').style.display = 'none';
+
+            let scene, camera, renderer, car;
+            let gameActive = true;
+            let level = 1;
+            let points = 0;
+            let gameTimer = 0;
+            let gameSpeed = 0.25;
+            let braking = false;
+            let moveLeft = false, moveRight = false;
+            let pointModel = null;
+            let obstacleCars = [];
+            let pointsObjects = [];
+            let roadSegments = [];
+            let objects = [];
+            let cloudGroup = null;
+
+            const speedValues = [10, 20, 30, 40, 50, 60];
+            let currentSpeedIndex = 0;
+
+            const MAX_DAILY_POINTS_COLLECTION = 20;
+            let dailyPointsCollected = 0;
+            let lastCollectionDate = "";
+            let freePointCooldown = 0;
+            const FREE_POINT_COOLDOWN_TIME = 5 * 60; // 5 minutes in seconds
+
+            // Engine sound system
+            let engineSound = null;
+            let soundEnabled = false;
+
+            function loadDailyData() {
+                const savedData = localStorage.getItem('gameDailyData');
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    const today = new Date().toDateString();
+                    if (data.lastCollectionDate === today) {
+                        dailyPointsCollected = data.dailyPointsCollected || 0;
+                    } else {
+                        dailyPointsCollected = 0;
+                    }
+                    lastCollectionDate = today;
+                } else {
+                    lastCollectionDate = new Date().toDateString();
+                }
+            }
+
+            function saveDailyData() {
+                const data = {
+                    dailyPointsCollected: dailyPointsCollected,
+                    lastCollectionDate: lastCollectionDate
+                };
+                localStorage.setItem('gameDailyData', JSON.stringify(data));
+            }
+            
+            loadDailyData();
+
+            function setupScene() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance", canvas: gameCanvas });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.shadowMap.enabled = true;
+                renderer.shadowMap.type = THREE.BasicShadowMap;
+                renderer.setClearColor(0x87CEEB, 1);
+                
+                const skyGeometry = new THREE.SphereGeometry(800, 16, 16);
+                const skyMaterial = new THREE.MeshBasicMaterial({ color: 0x87CEEB, side: THREE.BackSide });
+                scene.add(new THREE.Mesh(skyGeometry, skyMaterial));
+
+                cloudGroup = new THREE.Group();
+                const cloudGeometry = new THREE.SphereGeometry(20, 6, 6);
+                const cloudMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 });
+                for (let i = 0; i < 8; i++) {
+                    const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
+                    cloud.position.set(
+                        Math.random() * 600 - 300, 100 + Math.random() * 50, Math.random() * 800 - 400
+                    );
+                    cloud.scale.set(1 + Math.random(), 0.5 + Math.random() * 0.3, 1 + Math.random());
+                    cloudGroup.add(cloud);
+                }
+                scene.add(cloudGroup);
+
+                const light = new THREE.DirectionalLight(0xffffff, 0.8);
+                light.position.set(50, 100, 50);
+                light.castShadow = true;
+                light.shadow.mapSize.width = 1024;
+                light.shadow.mapSize.height = 1024;
+                light.shadow.camera.near = 0.5;
+                light.shadow.camera.far = 500;
+                light.shadow.camera.left = -100;
+                light.shadow.camera.right = 100;
+                light.shadow.camera.top = 100;
+                light.shadow.camera.bottom = -100;
+                scene.add(light);
+                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+                scene.add(ambientLight);
+
+                const roadGeometry = new THREE.PlaneGeometry(18, 100);
+                const roadMaterial = new THREE.MeshLambertMaterial({ color: 0x2C2C2C });
+                const lineGeometry = new THREE.PlaneGeometry(0.3, 100);
+                const lineMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+
+                for (let i = 0; i < 15; i++) {
+                    const road = new THREE.Mesh(roadGeometry, roadMaterial);
+                    road.rotation.x = -Math.PI / 2;
+                    road.position.z = -i * 100;
+                    road.receiveShadow = true;
+                    scene.add(road);
+                    roadSegments.push(road);
+                    
+                    const centerLine = new THREE.Mesh(lineGeometry, lineMaterial);
+                    centerLine.rotation.x = -Math.PI / 2;
+                    centerLine.position.set(0, 0.01, -i * 100);
+                    scene.add(centerLine);
+                    roadSegments.push(centerLine);
+
+                    const leftLine = new THREE.Mesh(lineGeometry, lineMaterial);
+                    leftLine.rotation.x = -Math.PI / 2;
+                    leftLine.position.set(-4.5, 0.01, -i * 100);
+                    scene.add(leftLine);
+                    roadSegments.push(leftLine);
+            
+                    const rightLine = new THREE.Mesh(lineGeometry, lineMaterial);
+                    rightLine.rotation.x = -Math.PI / 2;
+                    rightLine.position.set(4.5, 0.01, -i * 100);
+                    scene.add(rightLine);
+                    roadSegments.push(rightLine);
+                }
+
+                const groundGeo = new THREE.PlaneGeometry(200, 1500);
+                const groundMat = new THREE.MeshLambertMaterial({ color: 0x228B22 });
+                const ground = new THREE.Mesh(groundGeo, groundMat);
+                ground.rotation.x = -Math.PI / 2;
+                ground.position.y = -0.1;
+                ground.receiveShadow = true;
+                scene.add(ground);
+
+                for (let i = 0; i < 4; i++) {
+                    createSimpleEnvironment(i * -400);
+                }
+
+                car = createSuperCar(0x00CCCC);
+                car.position.set(0, 0.5, 0);
+                car.scale.set(0.7, 0.7, 0.7);
+                scene.add(car);
+                
+                document.getElementById('loadingScreen').style.display = 'none';
+
+                camera.position.set(0, 6, 8);
+                camera.lookAt(car.position);
+                camera.far = 1500;
+                camera.updateProjectionMatrix();
+
+                loadGameControls();
+                loadPointModel();
+            }
+
+            function createSuperCar(color = 0x00CCCC) {
+                const carGroup = new THREE.Group();
+                const bodyGeo = new THREE.BoxGeometry(2.2, 0.8, 4.5);
+                const bodyMat = new THREE.MeshLambertMaterial({ color: color });
+                const body = new THREE.Mesh(bodyGeo, bodyMat);
+                body.position.y = 0.4;
+                body.castShadow = true;
+                carGroup.add(body);
+                const cabinGeo = new THREE.BoxGeometry(1.6, 0.7, 2);
+                const cabinMat = new THREE.MeshLambertMaterial({ 
+                    color: 0x222222, transparent: true, opacity: 0.7
+                });
+                const cabin = new THREE.Mesh(cabinGeo, cabinMat);
+                cabin.position.set(0, 1.0, -0.3);
+                cabin.castShadow = true;
+                carGroup.add(cabin);
+                const wheelGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.25, 8);
+                const wheelMat = new THREE.MeshLambertMaterial({ color: 0x111111 });
+                const positions = [
+                    [-1.2, 0.35, 1.3], [1.2, 0.35, 1.3], [-1.2, 0.35, -1.5], [1.2, 0.35, -1.5]
+                ];
+                positions.forEach(pos => {
+                    const wheel = new THREE.Mesh(wheelGeo, wheelMat);
+                    wheel.rotation.z = Math.PI / 2;
+                    wheel.position.set(...pos);
+                    wheel.castShadow = true;
+                    carGroup.add(wheel);
+                });
+                const headlightGeo = new THREE.BoxGeometry(0.3, 0.15, 0.1);
+                const headlightMat = new THREE.MeshBasicMaterial({ 
+                    color: 0xaaaaff, emissive: 0x0000ff, emissiveIntensity: 0.3
+                });
+                const headlight1 = new THREE.Mesh(headlightGeo, headlightMat);
+                headlight1.position.set(-0.7, 0.5, 2.3);
+                carGroup.add(headlight1);
+                const headlight2 = headlight1.clone();
+                headlight2.position.x = 0.7;
+                carGroup.add(headlight2);
+                return carGroup;
+            }
+
+            function createObstacleCar() {
+                const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff, 0xffa500, 0x800080, 0xffffff];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                return createSuperCar(randomColor);
+            }
+
+            function createSimpleEnvironment(zOffset) {
+                for (let i = 0; i < 4; i++) {
+                    const z = zOffset - i * 50;
+                    const hillGeo = new THREE.ConeGeometry(15, 25, 6);
+                    const hillMat = new THREE.MeshLambertMaterial({ color: 0x228B22 });
+                    const hill1 = new THREE.Mesh(hillGeo, hillMat);
+                    hill1.position.set(-60, 12.5, z);
+                    scene.add(hill1);
+                    objects.push(hill1);
+                    const hill2 = hill1.clone();
+                    hill2.position.x = 60;
+                    scene.add(hill2);
+                    objects.push(hill2);
+                    const trunkGeo = new THREE.CylinderGeometry(0.5, 0.8, 8);
+                    const trunkMat = new THREE.MeshLambertMaterial({ color: 0x8B4513 });
+                    const leafGeo = new THREE.SphereGeometry(2.5, 6, 6);
+                    const leafMat = new THREE.MeshLambertMaterial({ color: 0x228B22 });
+                    for (let j = 0; j < 4; j++) {
+                        const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+                        const leaves = new THREE.Mesh(leafGeo, leafMat);
+                        const x = (j < 2 ? -1 : 1) * (20 + Math.random() * 10);
+                        trunk.position.set(x, 4, z + Math.random() * 15);
+                        leaves.position.set(x, 10, z + Math.random() * 15);
+                        trunk.castShadow = true;
+                        leaves.castShadow = true;
+                        scene.add(trunk, leaves);
+                        objects.push(trunk, leaves);
+                    }
+                }
+            }
+
+            function loadGameControls() {
+                document.getElementById("left").addEventListener("pointerdown", (e) => { e.preventDefault(); moveLeft = true; }); 
+                document.getElementById("left").addEventListener("pointerup", () => moveLeft = false);
+                document.getElementById("left").addEventListener("pointerleave", () => moveLeft = false); 
+
+                document.getElementById("right").addEventListener("pointerdown", (e) => { e.preventDefault(); moveRight = true; }); 
+                document.getElementById("right").addEventListener("pointerup", () => moveRight = false);
+                document.getElementById("right").addEventListener("pointerleave", () => moveRight = false); 
+
+                document.getElementById("brakeButton").addEventListener("pointerdown", (e) => { 
+                    e.preventDefault(); 
+                    braking = true;
+                    gameSpeed = 0.05;
+                });
+                document.getElementById("brakeButton").addEventListener("pointerup", () => {
+                    braking = false;
+                    gameSpeed = speedValues[currentSpeedIndex] / 50;
+                });
+                document.getElementById("brakeButton").addEventListener("pointerleave", () => {
+                    braking = false;
+                    gameSpeed = speedValues[currentSpeedIndex] / 50;
+                });
+
+                document.getElementById("speedButton").addEventListener("click", () => {
+                    currentSpeedIndex = (currentSpeedIndex + 1) % speedValues.length;
+                    if (!braking) {
+                        gameSpeed = speedValues[currentSpeedIndex] / 50;
+                    }
+                    document.getElementById('currentSpeedDisplay').textContent = speedValues[currentSpeedIndex];
+                    updateEngineSound(speedValues[currentSpeedIndex], braking);
+                });
+                
+                document.getElementById('soundButton').addEventListener('click', toggleSound);
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "ArrowLeft") moveLeft = true;
+                    if (event.key === "ArrowRight") moveRight = true;
+                    if (event.key === " ") {
+                        braking = true;
+                        gameSpeed = 0.05;
+                    }
+                });
+                document.addEventListener("keyup", (event) => {
+                    if (event.key === "ArrowLeft") moveLeft = false;
+                    if (event.key === "ArrowRight") moveRight = false;
+                    if (event.key === " ") {
+                        braking = false;
+                        gameSpeed = speedValues[currentSpeedIndex] / 50;
+                    }
+                });
+                
+                const permissionButton = document.getElementById('permissionButton');
+                function requestDeviceOrientationPermission() {
+                    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                        DeviceOrientationEvent.requestPermission()
+                            .then(permissionState => {
+                                if (permissionState === 'granted') {
+                                    window.addEventListener('deviceorientation', handleOrientation);
+                                    permissionButton.style.display = 'none';
+                                }
+                            })
+                            .catch(console.error);
+                    } else {
+                        window.addEventListener('deviceorientation', handleOrientation);
+                        permissionButton.style.display = 'none';
+                    }
+                }
+                if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    permissionButton.style.display = 'block';
+                    permissionButton.addEventListener('click', requestDeviceOrientationPermission);
+                } else if (window.DeviceOrientationEvent) {
+                    window.addEventListener('deviceorientation', handleOrientation);
+                    permissionButton.style.display = 'none';
+                } else {
+                    permissionButton.style.display = 'none';
+                }
+            }
+
+            function handleOrientation(event) {
+                const gamma = event.gamma || 0;
+                let normalizedTilt = gamma / 30;
+                normalizedTilt = Math.max(-1, Math.min(1, normalizedTilt));
+                
+                if (Math.abs(normalizedTilt) > 0.1) {
+                    if (normalizedTilt < -0.1) {
+                        moveLeft = true;
+                        moveRight = false;
+                    } else if (normalizedTilt > 0.1) {
+                        moveRight = true;
+                        moveLeft = false;
+                    }
+                } else {
+                    if (!document.getElementById("left").matches(':active') && 
+                        !document.getElementById("right").matches(':active')) {
+                        moveLeft = false;
+                        moveRight = false;
+                    }
+                }
+            }
+
+            function initEngineSound() {
+                const context = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = context.createOscillator();
+                const gainNode = context.createGain();
+                const filter = context.createBiquadFilter();
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(80, context.currentTime);
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(800, context.currentTime);
+                filter.Q.setValueAtTime(1, context.currentTime);
+                gainNode.gain.setValueAtTime(0.1, context.currentTime);
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(context.destination);
+                return { context, oscillator, gainNode, filter };
+            }
+
+            function updateEngineSound(speed, braking) {
+                if (!engineSound || !soundEnabled) return;
+                try {
+                    const { context, oscillator, gainNode, filter } = engineSound;
+                    const currentTime = context.currentTime;
+                    const minFreq = 80;
+                    const maxFreq = 300;
+                    const speedRatio = speed / 60;
+                    const targetFreq = minFreq + (speedRatio * (maxFreq - minFreq));
+                    oscillator.frequency.exponentialRampToValueAtTime(targetFreq, currentTime + 0.1);
+                    const filterFreq = 400 + (speedRatio * 800);
+                    filter.frequency.exponentialRampToValueAtTime(filterFreq, currentTime + 0.1);
+                    const baseVolume = 0.15;
+                    const targetVolume = braking ? baseVolume * 0.4 : baseVolume + (speedRatio * 0.1);
+                    gainNode.gain.exponentialRampToValueAtTime(Math.max(0.01, targetVolume), currentTime + 0.1);
+                } catch (error) {
+                    console.log("Engine sound update error:", error);
+                }
+            }
+
+            function toggleSound() {
+                const soundButton = document.getElementById('soundButton');
+                if (!soundEnabled) {
+                    try {
+                        engineSound = initEngineSound();
+                        engineSound.oscillator.start();
+                        soundEnabled = true;
+                        soundButton.textContent = '🔊 সাউন্ড অন';
+                        soundButton.style.backgroundColor = 'rgba(0, 150, 0, 0.7)';
+                    } catch (error) {
+                        console.log("Could not enable sound:", error);
+                    }
+                } else {
+                    try {
+                        if (engineSound && engineSound.oscillator) {
+                            engineSound.oscillator.stop();
+                            engineSound = null;
+                        }
+                        soundEnabled = false;
+                        soundButton.textContent = '🔇 সাউন্ড অফ';
+                        soundButton.style.backgroundColor = 'rgba(150, 0, 0, 0.7)';
+                    } catch (error) {
+                        console.log("Sound stop error:", error);
+                    }
+                }
+            }
+            
+            function loadPointModel() {
+                const loader = new THREE.GLTFLoader();
+                loader.load(
+                    'https://i.imgur.com/gzuCJhK.jpeg',
+                    function (gltf) {
+                        pointModel = gltf.scene;
+                        pointModel.traverse(function(node) {
+                            if (node.isMesh) {
+                                node.castShadow = true;
+                                node.receiveShadow = true;
+                            }
+                        });
+                        pointModel.scale.set(0.7, 0.7, 0.7);
+                        pointModel.rotation.x = Math.PI / 2;
+                    },
+                    undefined,
+                    function (error) {
+                        console.error('An error occurred loading the point model:', error);
+                        pointModel = new THREE.Mesh(
+                            new THREE.BoxGeometry(1.2, 1.2, 1.2),
+                            new THREE.MeshBasicMaterial({ color: 0xffff00 })
+                        );
+                        pointModel.castShadow = true;
+                        pointModel.receiveShadow = true;
+                    }
+                );
+            }
+
+            function generateObstacle() {
+                if (!gameActive || obstacleCars.length > 8) return;
+                const obstacle = createObstacleCar();
+                obstacle.scale.set(0.6, 0.6, 0.6);
+                const lanes = [-6, -3, 0, 3, 6];
+                obstacle.position.x = lanes[Math.floor(Math.random() * lanes.length)];
+                obstacle.position.y = 0.5;
+                obstacle.position.z = -60;
+                scene.add(obstacle);
+                obstacleCars.push(obstacle);
+            }
+        
+            let obstacleInterval = null;
+            function startObstacleGeneration() {
+                if (obstacleInterval) clearInterval(obstacleInterval);
+                obstacleInterval = setInterval(generateObstacle, 2500);
+            }
+
+            function generatePoint() {
+                if (!gameActive || !pointModel || dailyPointsCollected >= MAX_DAILY_POINTS_COLLECTION) {
+                    pointsObjects.forEach(point => {
+                        if(point.parent) scene.remove(point);
+                    });
+                    pointsObjects.length = 0;
+                    return;
+                }
+                
+                if (pointsObjects.length > 2) return;
+
+                const newPoint = pointModel.clone();
+                const lanes = [-4.5, 0, 4.5];
+                newPoint.position.x = lanes[Math.floor(Math.random() * lanes.length)];
+                newPoint.position.y = 1.0;
+                newPoint.position.z = -80 - Math.random() * 20;
+                
+                scene.add(newPoint);
+                pointsObjects.push(newPoint);
+            }
+            
+            let pointInterval = null;
+            function startPointGeneration() {
+                if (pointInterval) clearInterval(pointInterval);
+                pointInterval = setInterval(generatePoint, 4000);
+            }
+            
+            function stopGame() {
+                gameActive = false;
+                if(obstacleInterval) clearInterval(obstacleInterval);
+                if(pointInterval) clearInterval(pointInterval);
+                if(gameTimerInterval) clearInterval(gameTimerInterval);
+                if (soundEnabled && engineSound) {
+                    try {
+                        engineSound.oscillator.stop();
+                        engineSound = null;
+                    } catch (error) {
+                        console.log("Error stopping engine sound:", error);
+                    }
+                }
+            }
+
+            function gameOver() {
+                stopGame();
+                document.getElementById('gameOverScreen').style.display = 'flex';
+                // The home button is now visible
+            }
+
+            document.getElementById('restartButton').addEventListener('click', () => {
+                stopGame(); // Stop current intervals first
+                gameActive = true;
+                level = 1;
+                points = 0;
+                gameTimer = 0;
+                currentSpeedIndex = 0;
+                gameSpeed = speedValues[0] / 50;
+                braking = false;
+                car.position.set(0, 0.5, 0);
+                obstacleCars.forEach(obstacle => scene.remove(obstacle));
+                obstacleCars.length = 0;
+                pointsObjects.forEach(point => scene.remove(point));
+                pointsObjects.length = 0;
+                const today = new Date().toDateString();
+                if (lastCollectionDate !== today) {
+                    dailyPointsCollected = 0;
+                    lastCollectionDate = today;
+                }
+                saveDailyData();
+                document.getElementById('level').textContent = level;
+                document.getElementById('points').textContent = points;
+                document.getElementById('timer').textContent = gameTimer;
+                document.getElementById('currentSpeedDisplay').textContent = speedValues[currentSpeedIndex];
+                document.getElementById('gameOverScreen').style.display = 'none';
+                document.getElementById('pointLimitMessage').style.display = 'none';
+                
+                startObstacleGeneration();
+                startPointGeneration();
+                startGameTimer();
+                if(soundEnabled) { // Re-initialize sound if it was enabled
+                     try {
+                        engineSound = initEngineSound();
+                        engineSound.oscillator.start();
+                        updateEngineSound(speedValues[currentSpeedIndex], braking);
+                    } catch (error) {
+                        console.log("Could not re-enable sound:", error);
+                    }
+                }
+            });
+
+            document.getElementById('homeButton').addEventListener('click', () => {
+                stopGame();
+                document.getElementById('gameUI').style.display = 'none';
+                document.querySelector('.app-container').style.display = 'flex';
+                navigateTo('home');
+            });
+
+
+            let gameTimerInterval = null;
+            function startGameTimer() {
+                if (gameTimerInterval) clearInterval(gameTimerInterval);
+                gameTimerInterval = setInterval(() => {
+                    if (gameActive) {
+                        gameTimer++;
+                        document.getElementById('timer').textContent = Math.floor(gameTimer / 60);
+                        if ((gameTimer / 60) % 1 === 0 && gameTimer > 0) {
+                            level = Math.floor(gameTimer / 600) + 1;
+                            document.getElementById('level').textContent = level;
+                        }
+                    }
+                }, 1000);
+            }
+            startGameTimer();
+
+            const pointAdScreen = document.getElementById('pointAdScreen');
+            const adMessage = document.getElementById('adMessage');
+            const adOkButton = document.getElementById('adOkButton');
+            const freePointButton = document.getElementById('freePointButton');
+            const pointLimitMessage = document.getElementById('pointLimitMessage');
+            const possiblePoints = [3, 3, 3, 5, 5, 5, 10, 5, 10, 5];
+            
+            // Monetag অ্যাড দেখানোর জন্য নতুন ফাংশন
+            function showMonetagAdAndClaimReward() {
+                // Check if the ad function exists
+                if (MONETAG_AD_FUNCTION_NAME && typeof window[MONETAG_AD_FUNCTION_NAME] === 'function') {
+                    const adPromise = window[MONETAG_AD_FUNCTION_NAME]();
+                    if (adPromise && typeof adPromise.then === 'function') {
+                        adPromise.then(() => {
+                            // Ad watched successfully
+                            const earnedPoints = possiblePoints[Math.floor(Math.random() * possiblePoints.length)];
+                            currentUser.points += earnedPoints;
+                            dailyPointsCollected++;
+                            saveDailyData();
+                            saveUserState();
+                            document.getElementById('points').textContent = currentUser.points;
+                            alert(`বিজ্ঞাপন দেখে আপনি ${earnedPoints} পয়েন্ট পেয়েছেন!`);
+                        }).catch(error => {
+                            // Ad failed or closed prematurely
+                            console.error("Monetag ad error or closed:", error);
+                            alert("বিজ্ঞাপনটি লোড হতে পারেনি বা আপনি মাঝপথে বন্ধ করে দিয়েছেন। কোনো পয়েন্ট যোগ করা হয়নি।");
+                        }).finally(() => {
+                            pointAdScreen.style.display = 'none';
+                            gameActive = true;
+                        });
+                    } else {
+                        // Fallback for non-promise returning functions
+                        console.warn("Monetag ad function did not return a promise. Assuming it will display.");
+                        const earnedPoints = possiblePoints[Math.floor(Math.random() * possiblePoints.length)];
+                        currentUser.points += earnedPoints;
+                        dailyPointsCollected++;
+                        saveDailyData();
+                        saveUserState();
+                        document.getElementById('points').textContent = currentUser.points;
+                        alert(`বিজ্ঞাপন দেখে আপনি ${earnedPoints} পয়েন্ট পেয়েছেন!`);
+                        pointAdScreen.style.display = 'none';
+                        gameActive = true;
+                    }
+                } else {
+                    console.error("Monetag ad function is not defined.");
+                    alert("বিজ্ঞাপন লোড হতে পারেনি।");
+                    pointAdScreen.style.display = 'none';
+                    gameActive = true;
+                }
+            }
+
+            // এই ফাংশনটি এখন শুধুমাত্র স্ক্রিনটি দেখাবে
+            function showPointAdScreen() {
+                if (dailyPointsCollected >= MAX_DAILY_POINTS_COLLECTION) {
+                    pointLimitMessage.style.display = 'block';
+                    setTimeout(() => {
+                        pointLimitMessage.style.display = 'none';
+                    }, 3000);
+                    return;
+                }
+                gameActive = false;
+                pointAdScreen.style.display = 'flex';
+                adMessage.textContent = 'পয়েন্ট পেতে ওকে বাটনে ক্লিক করুন!';
+                adOkButton.textContent = 'ওকে';
+                adOkButton.style.display = 'block';
+            }
+
+            adOkButton.addEventListener('click', () => {
+                pointAdScreen.style.display = 'none'; // OK বাটনে ক্লিক করার সাথে সাথে স্ক্রিন সরিয়ে দিন
+                showMonetagAdAndClaimReward(); // এবং অ্যাড দেখানো শুরু করুন
+            });
+
+            let freePointCooldownInterval = null;
+            function updateFreePointButton() {
+                if (freePointCooldown <= 0) {
+                    freePointButton.textContent = 'ফ্রি পয়েন্ট (5)';
+                    freePointButton.disabled = false;
+                } else {
+                    const minutes = Math.floor(freePointCooldown / 60);
+                    const seconds = freePointCooldown % 60;
+                    freePointButton.textContent = `ফ্রি পয়েন্ট (${minutes}:${seconds < 10 ? '0' : ''}${seconds})`;
+                    freePointButton.disabled = true;
+                }
+            }
+
+            freePointButton.addEventListener('click', () => {
+                if (freePointCooldown <= 0) {
+                    currentUser.points += 5; // Add points to main user balance
+                    saveUserState(); // Save the updated user state
+                    document.getElementById('points').textContent = currentUser.points;
+                    freePointCooldown = FREE_POINT_COOLDOWN_TIME;
+                    updateFreePointButton();
+                }
+            });
+
+            function startFreePointCooldown() {
+                if(freePointCooldownInterval) clearInterval(freePointCooldownInterval);
+                freePointCooldownInterval = setInterval(() => {
+                    if (freePointCooldown > 0) {
+                        freePointCooldown--;
+                        updateFreePointButton();
+                    }
+                }, 1000);
+            }
+            startFreePointCooldown();
+
+            function checkCollisions() {
+                if (!gameActive || !car) return;
+                const carBox = new THREE.Box3().setFromObject(car);
+                
+                // Check collisions with obstacle cars
+                for(let i = obstacleCars.length - 1; i >= 0; i--) {
+                    const obstacle = obstacleCars[i];
+                    // Check if obstacle is behind the car
+                    if (obstacle.position.z > 15) {
+                        scene.remove(obstacle);
+                        obstacleCars.splice(i, 1);
+                        continue; // Go to the next obstacle
+                    }
+                    const obstacleBox = new THREE.Box3().setFromObject(obstacle);
+                    if (carBox.intersectsBox(obstacleBox)) {
+                        gameOver();
+                        return; // Exit the loop and function early
+                    }
+                }
+
+                // Check collisions with points
+                for (let i = pointsObjects.length - 1; i >= 0; i--) {
+                    const point = pointsObjects[i];
+                    const pointBox = new THREE.Box3().setFromObject(point);
+                    if (carBox.intersectsBox(pointBox)) {
+                        scene.remove(point);
+                        pointsObjects.splice(i, 1);
+                        showPointAdScreen(); // এখন শুধুমাত্র স্ক্রিনটি দেখাবে
+                    }
+                    if (point.position.z > 15) {
+                        scene.remove(point);
+                        pointsObjects.splice(i, 1);
+                    }
+                }
+            }
+
+            let lastTime = 0;
+            function animate(currentTime) {
+                if (!document.getElementById('gameUI').hasChildNodes()) {
+                    return; // Stop animation if game UI is no longer in the DOM
+                }
+
+                requestAnimationFrame(animate);
+                const deltaTime = currentTime - lastTime;
+                if (deltaTime < 1000 / 60) {
+                    lastTime = currentTime;
+                    return;
+                }
+                lastTime = currentTime;
+                
+                if (gameActive) {
+                    if (moveLeft && car.position.x > -6) { car.position.x -= 0.12; car.rotation.y = Math.PI / 8; }
+                    else if (moveRight && car.position.x < 6) { car.position.x += 0.12; car.rotation.y = -Math.PI / 8; }
+                    else { car.rotation.y = 0; }
+
+                    if (cloudGroup) cloudGroup.rotation.y += 0.0003;
+                    roadSegments.forEach(segment => {
+                        segment.position.z += gameSpeed;
+                        if (segment.position.z > 100) { segment.position.z -= 1500; }
+                    });
+                    objects.forEach(obj => {
+                        obj.position.z += gameSpeed;
+                        if (obj.position.z > 100) { obj.position.z -= 1600; }
+                    });
+                    obstacleCars.forEach(obstacle => { obstacle.position.z += gameSpeed; });
+                    pointsObjects.forEach(point => {
+                        point.position.z += gameSpeed;
+                        if (point.rotation) { point.rotation.y += 0.05; }
+                    });
+                    camera.position.set(0, 6, car.position.z + 8);
+                    camera.lookAt(car.position);
+                    checkCollisions();
+                    updateEngineSound(speedValues[currentSpeedIndex], braking);
+                }
+                renderer.render(scene, camera);
+            }
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            setupScene();
+            startObstacleGeneration();
+            startPointGeneration();
+            animate();
+        }
+    </script>
+</body>
+</html>
